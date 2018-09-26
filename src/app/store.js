@@ -5,9 +5,10 @@ import promise from 'redux-promise-middleware'; // async-await kullanilirsa gere
 
 import mathReducer from './reducers/mathReducer';
 import userReducer from './reducers/userReducer';
+import searchReducer from './reducers/searchReducer';
 
 export default createStore(
-  combineReducers({ mathReducer, userReducer }),
+  combineReducers({ mathReducer, userReducer, searchReducer }),
   {},
   applyMiddleware(createLogger(), thunk, promise())
 );
