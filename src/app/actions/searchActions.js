@@ -30,16 +30,12 @@ const searchMovies = keyword => {
   //   });
   // }
 
-  console.log('searchMovies action fired', keyword);
-
   if (keyword.length < 3) return;
 
   return dispatch => {
 
     axios.get(`http://localhost:8080/api/search?keyword=${keyword}`)
       .then(response => {
-
-        console.log('api fetched successfully!', response);
 
         var movies = response.data;
 
@@ -49,8 +45,6 @@ const searchMovies = keyword => {
         });
       })
       .catch(err => {
-
-        console.log('error occured fetchin api', err);
 
         dispatch({
           type: 'SEARCH_SEARCH_MOVIES_ERROR',

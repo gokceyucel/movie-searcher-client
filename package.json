@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run build",
-    "build": "webpack -d && cp src/index.html dist/index.html && webpack-dev-server --port 9090 --content-base src/ --inline --hot --history-api-fallback",
+    "build": "webpack -d && cp src/index.html dist/index.html && webpack-dev-server --host 127.0.0.1 --port 9090 --content-base src/ --inline --hot --history-api-fallback",
     "build:prod": "webpack -p && cp src/index.html dist/index.html"
   },
   "keywords": [
@@ -15,7 +15,9 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
-    "react": "^15.2.1",
+    "lodash.debounce": "^4.0.8",
+    "react": "^15.6.2",
+    "react-debounce-input": "^3.2.0",
     "react-dom": "^15.2.1",
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",

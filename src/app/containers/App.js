@@ -4,14 +4,16 @@ import { connect } from 'react-redux';
 import { setName } from '../actions/userActions';
 import { searchMovies } from '../actions/searchActions';
 
-import { User } from '../components/User';
-import { Main } from '../components/Main';
+import { SearchInput } from '../components/SearchInput';
 
 import './App.css';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+
+    };
 
     this.onInputChange = this.onInputChange.bind(this);
   }
@@ -26,16 +28,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <Main changeUsername={() => this.props.setName('Aha')} />
-        <User username={this.props.user.name} />
 
-        <input onChange={this.onInputChange} />
-        <button
-          className="btn btn-primary"
-          onClick={() => this.props.searchMovies('heroes')}> search movies heroes
-        </button>
-
-
+        <SearchInput
+          minLength={3}
+          debounceTimeout={300}
+          onChange={event => this.props.searchMovies(event.target.value)}
+        />
 
         {this.props.search.movies.map(movie => {
           return <div key={movie.imdbID}>{movie.Title}</div>
