@@ -32,6 +32,8 @@ const searchMovies = keyword => {
 
   console.log('searchMovies action fired', keyword);
 
+  if (keyword.length < 3) return;
+
   return dispatch => {
 
     axios.get(`http://localhost:8080/api/search?keyword=${keyword}`)

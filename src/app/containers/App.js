@@ -10,19 +10,33 @@ import { Main } from '../components/Main';
 import './App.css';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.onInputChange = this.onInputChange.bind(this);
+  }
+
+  onInputChange(event) {
+    event.persist();
+    setTimeout(() => {
+      this.props.searchMovies(event.target.value)
+    }, 1000);
+  }
+
   render() {
     return (
       <div className="container">
         <Main changeUsername={() => this.props.setName('Aha')} />
         <User username={this.props.user.name} />
 
-
-
-
+        <input onChange={this.onInputChange} />
         <button
           className="btn btn-primary"
           onClick={() => this.props.searchMovies('heroes')}> search movies heroes
         </button>
+
+
+
         {this.props.search.movies.map(movie => {
           return <div key={movie.imdbID}>{movie.Title}</div>
         })}
