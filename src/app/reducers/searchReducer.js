@@ -11,15 +11,15 @@ const searchReducer = (state = {
       };
       break;
     // FUNCTIONAL_REQUIREMENT_FRONTEND_6
-    case 'SEARCH_SEARCH_MOVIES_LOADING':
+    case 'SEARCH_SEARCH_MOVIES_ERROR':
       state = {
         ...state,
-        movies: action.payload.movies,
+        movies: [],
         message: action.payload.message
       };
       break;
     // FUNCTIONAL_REQUIREMENT_FRONTEND_6
-    case 'SEARCH_SEARCH_MOVIES_ERROR':
+    case 'SEARCH_SEARCH_MOVIES_LOADING':
       state = {
         ...state,
         movies: [],
