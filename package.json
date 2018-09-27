@@ -1,17 +1,16 @@
 {
-  "name": "reactjs-basics",
-  "version": "1.0.0",
-  "description": "Some basic ReactJS",
+  "name": "movies-searcher-client",
+  "version": "0.1.0",
   "main": "index.js",
   "scripts": {
     "start": "npm run build",
     "build": "webpack -d && cp src/index.html dist/index.html && webpack-dev-server --host 127.0.0.1 --port 9090 --content-base src/ --inline --hot --history-api-fallback",
     "build:prod": "webpack -p && cp src/index.html dist/index.html"
   },
-  "keywords": [
-    "reactjs"
-  ],
-  "author": "Maximilian Schwarzmueller",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:gokceyucel/movie-searcher-client.git"
+  },
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
