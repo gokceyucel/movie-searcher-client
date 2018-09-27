@@ -16,6 +16,7 @@ export class SearchInput extends React.PureComponent {
   }
 
   componentWillMount() {
+    // FUNCTIONAL_REQUIREMENT_FRONTEND_5
     const debouncedChangeFunc = debounce(event => {
       this.isDebouncing = false;
       const { onChange } = this.props;
@@ -35,7 +36,9 @@ export class SearchInput extends React.PureComponent {
     this.setState({ value: event.target.value }, () => {
       const { value } = this.state;
 
+      // FUNCTIONAL_REQUIREMENT_FRONTEND_4
       if (value.length < this.props.minLength) return;
+
       this.notify(event);
     });
   };
