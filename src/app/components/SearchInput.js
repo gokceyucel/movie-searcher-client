@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import debounce from 'lodash.debounce';
 
+import './SearchInput.css';
 
 export class SearchInput extends React.PureComponent {
 
@@ -36,9 +36,7 @@ export class SearchInput extends React.PureComponent {
       const { value } = this.state;
 
       if (value.length < this.props.minLength) return;
-
       this.notify(event);
-
     });
   };
 
@@ -51,10 +49,17 @@ export class SearchInput extends React.PureComponent {
       ...props
     } = this.props;
 
-    return React.createElement('input', {
-      ...props,
-      onChange: this.onChange,
-      value: this.state.value
-    });
+    return (
+      <div id="search">
+        <input
+          {...props}
+          type="search"
+          className="form-control"
+          placeholder="type keyword(s) here"
+          onChange={this.onChange}
+          value={this.state.value}
+        />
+      </div>
+    )
   }
 }

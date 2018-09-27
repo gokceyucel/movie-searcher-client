@@ -1,0 +1,16 @@
+#search input[type="search"] {
+    top: 80px;
+    width: 100%;
+    height: 80px;
+    box-shadow: inset 0px 0px 0px 0px;
+    font-size: 30px;
+    font-weight: 300;
+    text-align: center;
+    border: 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+/* https://stackoverflow.com/a/11920714/1998477 */
+input:focus::-webkit-input-placeholder { color:transparent; }
+

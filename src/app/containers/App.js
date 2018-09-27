@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { searchMovies } from '../actions/searchActions';
-
 import { SearchInput } from '../components/SearchInput';
 import { MovieLister } from '../components/MovieLister';
 
