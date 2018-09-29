@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { searchMovies } from '../actions/searchActions';
-import { SearchInput } from '../components/SearchInput';
-import { MovieLister } from '../components/MovieLister';
+import { searchMovies } from '../../actions/searchActions';
+import { SearchInput, MovieLister } from '../../components';
 
-import './App.css';
+import './styles.css';
 
 class App extends React.Component {
   render() {
@@ -14,14 +13,13 @@ class App extends React.Component {
       movies,
     } = this.props.search;
 
-    
     return (
       <div className="container">
         {/* FUNCTIONAL_REQUIREMENT_FRONTEND_1 */}
         <SearchInput
           minLength={3}
           debounceTimeout={300}
-          onChange={event => this.props.searchMovies(event.target.value)}
+          onChange={this.props.searchMovies}
         />
         <div>{message}</div>
         <MovieLister movies={movies} />

@@ -1,9 +1,8 @@
 import React from "react";
 
-import './MovieLister.css'
+import './styles.css'
 
-export const MovieLister = props => {
-  const movies = (props.movies && Array.isArray(props.movies) && props.movies) || [];
+const MovieLister = ({ movies = [] }) => {
   return (
     <div className="row">
       {movies.map(movie => {
@@ -17,3 +16,5 @@ export const MovieLister = props => {
     </div>
   );
 }
+
+export default MovieLister;
