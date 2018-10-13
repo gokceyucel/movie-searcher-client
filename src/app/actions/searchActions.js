@@ -22,7 +22,7 @@ const fetchMovieSuccess = data => {
 const fetchMovieFailed = err => {
   return {
     type: SEARCH_SEARCH_MOVIES_ERROR,
-    payload: { message: err.message }
+    payload: { message: err.message || err }
   };
 }
 
@@ -32,11 +32,13 @@ const fetchMovieRequest = () => {
   };
 }
 
+const searchApiUrl = `http://${process.env.API_URL}:${process.env.API_PORT}`;
+
 const searchMovies = keyword => {
   return async dispatch => {
     dispatch(fetchMovieRequest());
     try {
-      const response = await axios.get(`http://${process.env.API_URL}:${process.env.API_PORT}/api/search?keyword=${keyword}`);
+      const response = await axios.get(`${searchApiUrl}/api/search?keyword=${keyword}`);
       const movies = response.data;
       dispatch(fetchMovieSuccess(movies));
     } catch (ex) {

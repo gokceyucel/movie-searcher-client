@@ -1,5 +1,9 @@
 import searchReducer from './searchReducer';
-import { SEARCH_SEARCH_MOVIES_SUCCESS } from '../constants/actionTypes';
+import { 
+  SEARCH_SEARCH_MOVIES_SUCCESS,
+  SEARCH_SEARCH_MOVIES_ERROR,
+  SEARCH_SEARCH_MOVIES_LOADING
+ } from '../constants/actionTypes';
 
 describe('search reducer', () => {
   it('returns initial state', () => {
@@ -36,6 +40,36 @@ describe('search reducer', () => {
         }
       ],
       message: ''
+    })
+  });
+
+  it('sets error message', () => {
+    const beforeState = {};
+    const action = {
+      type: SEARCH_SEARCH_MOVIES_ERROR,
+      payload: {
+        message: 'Network error'
+      }
+    }
+
+    const afterState = searchReducer(beforeState, action);
+
+    expect(afterState).toEqual({
+      movies: [],
+      message: 'Network error'
+    })
+  });
+
+  it('sets loading message', () => {
+    const beforeState = {};
+    const action = {
+      type: SEARCH_SEARCH_MOVIES_LOADING
+    }
+
+    const afterState = searchReducer(beforeState, action);
+    expect(afterState).toEqual({
+      movies: [],
+      message: 'Loading movies...'
     })
   });
 });
