@@ -33,12 +33,15 @@ const fetchMovieRequest = () => {
 }
 
 const searchMovies = keyword => {
-  return dispatch => {
+  return async dispatch => {
     dispatch(fetchMovieRequest());
-    axios.get(`http://${process.env.API_URL}:${process.env.API_PORT}/api/search?keyword=${keyword}`)
-      .then(response => response.data)
-      .then(movies => dispatch(fetchMovieSuccess(movies)))
-      .catch(err => dispatch(fetchMovieFailed(err)));
+    try {
+      const response = await axios.get(`http://${process.env.API_URL}:${process.env.API_PORT}/api/search?keyword=${keyword}`);
+      const movies = response.data;
+      dispatch(fetchMovieSuccess(movies));
+    } catch (ex) {
+      dispatch(fetchMovieFailed(ex.message));
+    }
   }
 };
 
